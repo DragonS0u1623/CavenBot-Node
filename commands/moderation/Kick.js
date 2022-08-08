@@ -8,10 +8,10 @@ module.exports = class extends Command {
     constructor(client, name='kick') {
         super(client, name, {
             category: 'Moderation',
-            description: 'Kicks the user from the server',
+            description: 'Kicks the user = the server',
             expectedArgs: '<user> [reason]',
             slash: true,
-            data: new SlashCommandBuilder().setName('kick').setDescription('Kicks the user from the server')
+            data: new SlashCommandBuilder().setName('kick').setDescription('Kicks the user = the server')
                 .addUserOption(option => option.setName('target').setDescription('The person you want to kick').setRequired(true))
                 .addStringOption(option => option.setName('reason').setDescription('The reason they are being kicked').setRequired(false))
                 .setDMPermission(false)
@@ -45,7 +45,7 @@ module.exports = class extends Command {
         guild.members.kick(kick, reason).then(async (__) => {
             interaction.editReply('Member kicked')
 
-            const admin = await adminSchema.findOne<admin>({ guildId: guild.id })
+            const admin = await adminSchema.findOne({ guildId: guild.id })
             guild.channels.fetch(admin.audits).then(async (channel) => {
                 const embed = new EmbedBuilder()
                     .setTitle(`Member Kicked: ${kick}`)
@@ -78,6 +78,7 @@ module.exports = class extends Command {
         }
 
         let kick, reason
+        
         if (!message.mentions.members) {
             kick = await guild.members.fetch(args.shift())
             reason = args.join(' ')

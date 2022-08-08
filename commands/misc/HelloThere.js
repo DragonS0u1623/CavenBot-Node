@@ -20,7 +20,7 @@ module.exports = class extends Command {
             .setURL(gif)
             .setImage(gif)
             .setColor(Colors.NotQuiteBlack)
-            .setTimestamp()
+            .setTimestamp(new Date())
             .setFooter({ text: FOOTER, iconURL: OWNERPFP })
 		message.channel.send({ embeds: [embed] })
 	}

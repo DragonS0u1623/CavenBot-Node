@@ -11,7 +11,7 @@ module.exports = class extends Command {
             expectedArgs: '<audits/welcome>',
             slash: true,
             data: new SlashCommandBuilder().setName('settings')
-                .setDescription('Command to toggle on and off different settings for the bot.\nSettings to change:\n\t`Audits`\n\t`Welcome`')
+                .setDescription('Command to toggle on and off different settings for the bot')
                 .addStringOption(option => option.setName('option').setDescription('Enable or disable Audits or Welcome Messages or both')
                     .setChoices(
                         {name: 'AUDITS', value: 'AUDITS'}, 

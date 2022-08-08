@@ -1,6 +1,6 @@
 const Event = require('../../structures/Event')
 
-module.exports =  class extends Event {
+module.exports = class extends Event {
 	constructor(client, name='interactionCreate') {
 		super(client, name)
 	}

@@ -4,6 +4,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders')
 module.exports = class extends Command {
     constructor(client, name='dice') {
         super(client, name, {
+            name: 'dice',
             aliases: ['d'],
             category: 'Misc',
             description: 'Rolls a dice with the amount of sides given. Default is a normal 6-sided dice',

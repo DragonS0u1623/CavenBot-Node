@@ -1,9 +1,7 @@
 const Event = require('../../structures/Event')
-const serverSchema = require('../../models/serverSchema')
 const { Colors, EmbedBuilder } = require('discord.js')
-const joinRoleSChema = require('../../models/joinRole')
+const serverSchema = require('../../models/serverSchema')
 const adminSchema = require('../../models/admin')
-const moment = require('moment')
 const { FOOTER, OWNERPFP } = require('../../utils/StaticVars')
 
 module.exports = class extends Event {
@@ -26,7 +24,7 @@ module.exports = class extends Event {
                     .setDescription(`Joined the server`)
                     .setThumbnail(`${member.avatarURL()}`)
                     .setColor(Colors.Green)
-                    .setTimestamp(new Date())
+                    .setTimestamp()
                     .addFields(
                         { name: `Joined at`, value: `<t:${member.joinedTimestamp}>`, inline: false },
                         { name: `Created at`, value: `<t:${member.user.createdTimestamp}>`, inline: false })
@@ -47,7 +45,7 @@ module.exports = class extends Event {
                     .setDescription(`${admin.welcome_message}`)
                     .setColor(Colors.Green)
                     .setThumbnail(member.avatarURL())
-                    .setTimestamp(new Date())
+                    .setTimestamp()
                     .setFooter({ text: FOOTER, iconURL: OWNERPFP })
                 channel.send({ embeds: [embed] })
             })

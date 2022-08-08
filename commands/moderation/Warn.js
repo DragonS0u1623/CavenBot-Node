@@ -21,13 +21,7 @@ module.exports = class extends Command {
 
     async executeSlash(interaction) {
         interaction.deferReply()
-        const { guild, user } = interaction
-        const member = await guild.members.fetch(user.id)
-
-        if (!member.permissions.has(PermissionFlagsBits.KickMembers | PermissionFlagsBits.BanMembers | PermissionFlagsBits.ModerateMembers)) {
-            interaction.editReply(`You don't have permission to use this command`)
-            return
-        }
+        const { guild } = interaction
 
         const admin = await adminSchema.findOne({ guildId: guild.id })
         guild.channels.fetch(admin.audits).then(async (channel) => {

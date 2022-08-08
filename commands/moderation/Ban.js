@@ -5,6 +5,7 @@ const { PermissionFlagsBits } = require('discord.js')
 module.exports = class extends Command {
     constructor(client, name='ban') {
         super(client, name, {
+            name: 'ban',
             category: 'Moderation',
             description: 'Bans the user from the server',
             expectedArgs: '<user> [reason]',

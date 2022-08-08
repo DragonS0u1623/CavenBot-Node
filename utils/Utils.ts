@@ -35,11 +35,11 @@ export default class Utils {
     isClass(input: any) {
 		return typeof input === 'function' &&
         typeof input.prototype === 'object' &&
-        input.toString().substring(0, 5) === 'class'
+        /_class\S+/i.test(input.toString())
 	}
 
 	get directory() {
-		return `${path.dirname(require.main?.filename || '')}${path.sep}`
+		return `${path.dirname(require.main?.filename || '')}${path.sep}`.replace(/\\/g, '/')
 	}
 
 	removeDuplicates(arr: Iterable<unknown> | null | undefined) {

@@ -3,7 +3,7 @@ import musicSettingsSchema, { musicSettings } from '../../models/musicSettings'
 import CavenBot from '../../structures/CavenBot'
 import { Queue, Song } from 'discord-music-player'
 
-module.exports = class extends Event {
+export default class extends Event {
 	constructor(client: CavenBot, name='songChanged') {
 		super(client, name, {
 			once: false,

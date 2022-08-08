@@ -9,7 +9,7 @@ module.exports = class extends Event {
 		})
 	}
 
-	async run(queue, newSong, oldSong) {
+	async run(queue, newSong, _oldSong) {
 		const data = queue.data
 		const { channel, vc } = data
 		const { requestedBy } = newSong

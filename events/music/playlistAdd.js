@@ -1,4 +1,4 @@
-const Event = require('../../structures/Event.js')
+const Event = require('../../structures/Event')
 
 module.exports = class extends Event {
 	constructor(client, name='playlistAdd') {

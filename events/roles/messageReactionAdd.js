@@ -2,7 +2,7 @@ const Event = require('./../../structures/Event')
 const reactSchema = require('./../../models/reactRoles')
 const serverSchema = require('./../../models/serverSchema')
 
-module.exports =  class extends Event {
+module.exports = class extends Event {
 	constructor(client, name='messageReactionAdd') {
 		super(client, name)
 	}

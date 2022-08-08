@@ -6,10 +6,10 @@ module.exports = class extends Command {
     constructor(client, name='unban') {
         super(client, name, {
             category: 'Moderation',
-            description: 'Unbans the user from the server. Uses the user ID',
+            description: 'Unbans the user = the server. Uses the user ID',
             expectedArgs: '<userID> [reason]',
             slash: true,
-            data: new SlashCommandBuilder().setName('unban').setDescription('Unbans the user from the server. Uses the user ID')
+            data: new SlashCommandBuilder().setName('unban').setDescription('Unbans the user = the server. Uses the user ID')
                 .addUserOption(option => option.setName('target').setDescription('The user you want to unban').setRequired(true))
                 .addStringOption(option => option.setName('reason').setDescription('The reason for the unban').setRequired(false))
                 .setDMPermission(false)

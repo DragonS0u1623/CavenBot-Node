@@ -17,14 +17,14 @@ module.exports = class extends Command {
             guildOnly: false,
             slash: true,
             data: new SlashCommandBuilder().setName('define').setDescription('Defines the given word')
-                .addStringOption(option => option.setName('word').setDescription('The word that you want to define').setRequired(true))
+                .addStringOption(option => option.setName('word').setDescription('The word you want to define').setRequired(true))
 		})
 	}
 
     async executeSlash(interaction) {
         interaction.deferReply()
 
-        word = interaction.options.getString('word')
+        word = interaction.options.getString('')
 
         axios.get(url).then(async (response) => {
             const dictJson = response.data[0]
@@ -55,10 +55,9 @@ module.exports = class extends Command {
 
 	async run(message, args) {
         if (!args) {
-            message.channel.send('You need to provide a word to define')
+            message.channel.send(`You need to provide a word for this command.`)
             return
         }
-
         word = args[0]
 
         axios.get(url).then(async (response) => {

@@ -6,15 +6,12 @@ const Event = require('../structures/Event')
 const { REST } = require('@discordjs/rest')
 const { BOTID, HOMESERVERID } = require('./StaticVars')
 const { Routes } = require('discord.js')
-const fs = require('fs')
 
 const slashcommands = []
 const testCommands = []
 const status = ['m?help', 'Now with music commands!', 'Back and better than ever!', 'Get support at discord.gg/6TjuPYy']
 
 module.exports = class Utils {
-	commandsPath = path.join(this.directory, 'commands')
- 	eventsPath = path.join(this.directory, 'events')
     constructor(client) {
         this.client = client
     }
@@ -39,7 +36,7 @@ module.exports = class Utils {
 	}
 
 	get directory() {
-		return `${path.dirname(require.main?.filename || '')}`
+		return `${path.dirname(require.main?.filename || '')}${path.sep}`.replace(/\\/g, '/')
 	}
 
 	removeDuplicates(arr) {
@@ -86,8 +83,7 @@ module.exports = class Utils {
 	}
 
 	async loadCommands() {
-		return glob(`${this.directory}/commands/**/*.js`).then((commands) => {
-			console.log(commands)
+		return glob(`${this.directory}commands/**/*.js`).then((commands) => {
 			for (const commandFile of commands) {
 				delete require.cache[commandFile]
 				const { name } = path.parse(commandFile)
@@ -111,8 +107,7 @@ module.exports = class Utils {
 	}
 
 	async loadEvents() {
-		return glob(`${this.directory}/events/**/*.js`).then((events) => {
-			console.log(events)
+		return glob(`${this.directory}events/**/*.js`).then((events) => {
 			for (const eventFile of events) {
 				delete require.cache[eventFile]
 				const { name } = path.parse(eventFile)
@@ -128,7 +123,6 @@ module.exports = class Utils {
 
 	async loadTestSlashCommands() {
 		const rest = new REST({ version: '10' }).setToken(process.env.TOKEN)
-		console.log(testCommands)
 		try {
 			await rest.put(
 				Routes.applicationGuildCommands(BOTID, HOMESERVERID),
@@ -142,7 +136,6 @@ module.exports = class Utils {
 
 	async loadSlashCommands() {
 		const rest = new REST({ version: '10' }).setToken(process.env.TOKEN)
-		console.log(slashcommands)
 		try {
 			await rest.put(
 				Routes.applicationCommands(BOTID),

@@ -1,6 +1,6 @@
 const Event = require('../../structures/Event')
-const serverSchema = require('../../models/serverSchema')
 const { Colors, EmbedBuilder } = require('discord.js')
+const serverSchema = require('../../models/serverSchema')
 const adminSchema = require('../../models/admin')
 const { FOOTER, OWNERPFP } = require('../../utils/StaticVars')
 

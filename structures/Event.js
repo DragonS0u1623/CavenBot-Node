@@ -1,3 +1,5 @@
+const CavenBot = require('./CavenBot')
+
 module.exports = class Event {
 	constructor(client, name, options = {
 		once: false,
