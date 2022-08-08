@@ -12,7 +12,7 @@ module.exports = class extends Command {
             category: 'Action',
             description: 'Sends an embed with a gif of someone being licked',
             slash: true,
-			data: new SlashCommandBuilder().setName('beg')
+			data: new SlashCommandBuilder().setName('lick')
 				.setDescription('Sends an embed with a gif of someone being licked')
                 .addUserOption(option => option.setName('target').setDescription('The person you want to lick').setRequired(false))
         })

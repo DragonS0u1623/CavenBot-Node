@@ -10,7 +10,7 @@ module.exports = class extends Command {
             category: 'Action',
             description: 'Sends an embed with a gif of the given search term',
             slash: true,
-			data: new SlashCommandBuilder().setName('beg')
+			data: new SlashCommandBuilder().setName('gif')
 				.setDescription('Sends an embed with a gif of the given search term')
                 .addStringOption(option => option.setName('searchterm').setDescription('The term you want to search').setRequired(true))
         })

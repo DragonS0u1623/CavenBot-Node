@@ -37,10 +37,10 @@ module.exports = class CavenBot extends Client {
 	}
 
 	async start() {
-		this.utils.loadCommands()
-		this.utils.loadEvents()
-		this.utils.loadSlashCommands()
-        this.utils.loadTestSlashCommands()
+		await this.utils.loadCommands()
+		await this.utils.loadEvents()
+		await this.utils.loadSlashCommands()
+        await this.utils.loadTestSlashCommands()
 		super.login(process.env.TOKEN)
 	}
 }

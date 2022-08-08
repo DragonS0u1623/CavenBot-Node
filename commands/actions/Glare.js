@@ -12,7 +12,7 @@ module.exports = class extends Command {
             category: 'Action',
             description: 'Sends an embed with a gif of someone glaring',
             slash: true,
-			data: new SlashCommandBuilder().setName('beg')
+			data: new SlashCommandBuilder().setName('glare')
 				.setDescription('Sends an embed with a gif of someone glaring')
                 .addUserOption(option => option.setName('target').setDescription('The person you want to glare at').setRequired(false))
         })
