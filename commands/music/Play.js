@@ -17,7 +17,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const url = interaction.options.getString('url')
         const { player } = this.client
         let queue = player.hasQueue(interaction.guild.id) ? player.getQueue(interaction.guild.id) : player.createQueue(interaction.guild.id, {

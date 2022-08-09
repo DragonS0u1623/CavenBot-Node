@@ -15,7 +15,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const { player } = this.client
         if (!player.hasQueue(interaction.guild.id)) {
             interaction.editReply(`I am not in a voice channel and there is no music playing`)

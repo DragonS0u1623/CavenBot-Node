@@ -16,7 +16,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const { guild } = interaction
         
         let botCount = 0, memberCount = 0

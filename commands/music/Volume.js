@@ -16,7 +16,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         let volume = interaction.options.getInteger('volume')
         const { checkPlayerInteraction } = this.client.utils
         const { player } = this.client

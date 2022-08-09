@@ -17,7 +17,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
 
         const searchTerm = interaction.options.getString('searchTerm')
         searchTerm.replace(' ', '%20')
@@ -27,7 +27,7 @@ module.exports = class extends Command {
             const json = response.data.results[0].media[0].gif
 
             const embed = new EmbedBuilder()
-                .setTitle(`${interaction.user} gives a gif to everyone`)
+                .setTitle(`${interaction.user.tag} gives a gif to everyone`)
                 .setDescription(`[Link to image](${json.url})`)
                 .setImage(json.url)
                 .setColor(Colors.NotQuiteBlack)
@@ -44,7 +44,7 @@ module.exports = class extends Command {
             const json = response.data.results[0].media[0].gif
 
             const embed = new EmbedBuilder()
-                .setTitle(`${message.author} gives a gif to everyone`)
+                .setTitle(`${message.author.tag} gives a gif to everyone`)
                 .setDescription(`[Link to image](${json.url})`)
                 .setImage(json.url)
                 .setColor(Colors.NotQuiteBlack)

@@ -22,7 +22,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const repeat = interaction.options.getString('repeattype')
         const { checkPlayerInteraction } = this.client.utils
         const { player } = this.client

@@ -13,7 +13,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const { checkPlayerInteraction } = this.client.utils
         const { player } = this.client
         if (!checkPlayerInteraction(player, interaction)) return

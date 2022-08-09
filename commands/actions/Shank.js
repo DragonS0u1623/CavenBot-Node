@@ -20,13 +20,13 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
 
         axios.get(TenorAPI).then(response => {
             const json = response.data.results[0].media[0].gif
 
             const embed = new EmbedBuilder()
-                .setTitle(`${interaction.user} shanks everyone`)
+                .setTitle(`${interaction.user.tag} shanks everyone`)
                 .setDescription(`[Link to image](${json.url})`)
                 .setImage(json.url)
                 .setColor(Colors.NotQuiteBlack)
@@ -34,7 +34,7 @@ module.exports = class extends Command {
                 .setFooter({ text: FOOTER, iconURL: OWNERPFP })
 
             const user = interaction.options.getUser('target')
-            if (user != null) embed.setTitle(`${interaction.user} shanks ${user}`)
+            if (user != null) embed.setTitle(`${interaction.user.tag} shanks ${user.tag}`)
             interaction.editReply({ embeds: [embed] })
         }).catch(error => interaction.editReply('An error has occurred. Please try again.'))
     }
@@ -44,7 +44,7 @@ module.exports = class extends Command {
             const json = response.data.results[0].media[0].gif
 
             const embed = new EmbedBuilder()
-                .setTitle(`${message.author} shanks everyone`)
+                .setTitle(`${message.author.tag} shanks everyone`)
                 .setDescription(`[Link to image](${json.url})`)
                 .setImage(json.url)
                 .setColor(Colors.NotQuiteBlack)
@@ -52,7 +52,7 @@ module.exports = class extends Command {
                 .setFooter({ text: FOOTER, iconURL: OWNERPFP })
             
             const user = message.mentions.users.first()
-            if (user != null) embed.setTitle(`${message.author} shanks ${user}`)
+            if (user != null) embed.setTitle(`${message.author.tag} shanks ${user.tag}`)
             message.channel.send({ embeds: [embed] })
         }).catch(error => message.channel.send('An error has occurred. Please try again.'))
     }

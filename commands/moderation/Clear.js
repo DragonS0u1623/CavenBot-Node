@@ -17,7 +17,6 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
         const { guild } = interaction
         
         if (!guild.members.me.permissions.has(PermissionFlagsBits.ManageMessages)) {

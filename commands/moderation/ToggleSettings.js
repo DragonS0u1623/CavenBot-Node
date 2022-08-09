@@ -24,6 +24,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
+        await interaction.deferReply()
         const { guild } = interaction
 
         const { welcome, audits } = await serverSchema.findOne({ guildId: guild.id })

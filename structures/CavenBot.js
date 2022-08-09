@@ -19,7 +19,7 @@ module.exports = class CavenBot extends Client {
 				status: 'online',
 				activities: [
 					{
-						name: 'ready event hasn\'t started yet'
+						name: 'm?help'
 					}
 				]
 			}

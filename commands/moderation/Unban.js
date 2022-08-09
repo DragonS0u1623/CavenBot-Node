@@ -18,7 +18,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const { guild } = interaction
         if (!guild.members.me.permissions.has(PermissionFlagsBits.BanMembers)) {
             interaction.editReply(`I don't have permission to do that\n\n**Needed Perms**\nBan Members`)

@@ -20,7 +20,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const { guild } = interaction
 
         const admin = await adminSchema.findOne({ guildId: guild.id })
@@ -31,13 +31,14 @@ module.exports = class extends Command {
             target = await guild.members.fetch(id)
 
             const embed = new EmbedBuilder()
-                .setTitle(`${target} Warned`)
+                .setTitle(`${target.tag} Warned`)
                 .setDescription(reason)
                 .setThumbnail(target.avatarURL())
                 .setTimestamp(new Date())
                 .setFooter({ text: FOOTER, iconURL: OWNERPFP })
             target.createDM().then(dm => dm.send(`You have been warned in ${guild}\nReason: ${reason}`))
             channel.send({ embeds: [embed] })
+            interaction.editReply('Member warned')
         })
     }
 
@@ -67,13 +68,14 @@ module.exports = class extends Command {
             }
 
             const embed = new EmbedBuilder()
-                .setTitle(`${user} Warned`)
+                .setTitle(`${user.tag} Warned`)
                 .setDescription(reason)
                 .setThumbnail(user.avatarURL())
                 .setTimestamp(new Date())
                 .setFooter({ text: FOOTER, iconURL: OWNERPFP })
             user.createDM().then(dm => dm.send(`You have been warned in ${guild}\nReason: ${reason}`))
             channel.send({ embeds: [embed] })
+            message.channel.send('Member warned')
         })
     }
 }

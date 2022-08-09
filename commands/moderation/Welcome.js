@@ -17,7 +17,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const { guild } = interaction
 
         const { id } = interaction.options.getChannel('channel')

@@ -19,7 +19,7 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
-        interaction.deferReply()
+        await interaction.deferReply()
         const { guild, member } = interaction
         let { id } = interaction.options.getUser('target')
         const reason = interaction.options.getString('reason') || 'No reason given'

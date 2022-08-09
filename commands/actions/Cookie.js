@@ -18,8 +18,9 @@ module.exports = class extends Command {
     }
 
     async executeSlash(interaction) {
+        await interaction.deferReply()
         const embed = new EmbedBuilder()
-            .setTitle(`${interaction.user} gives a cookie to everyone`)
+            .setTitle(`${interaction.user.tag} gives a cookie to everyone`)
             .setDescription(`[Link to image](${cookie})`)
             .setImage(cookie)
             .setColor(Colors.NotQuiteBlack)
@@ -27,13 +28,13 @@ module.exports = class extends Command {
             .setFooter({ text: FOOTER, iconURL: OWNERPFP })
 
         const user = interaction.options.getUser('target')
-        if (user != null) embed.setTitle(`${interaction.user} gives a cookie to ${user}`)
+        if (user != null) embed.setTitle(`${interaction.user.tag} gives a cookie to ${user.tag}`)
         interaction.editReply({ embeds: [embed] })
     }
 
     async run(message) {
         const embed = new EmbedBuilder()
-            .setTitle(`${message.author} gives a cookie to everyone`)
+            .setTitle(`${message.author.tag} gives a cookie to everyone`)
             .setDescription(`[Link to image](${cookie})`)
             .setImage(cookie)
             .setColor(Colors.NotQuiteBlack)
@@ -41,7 +42,7 @@ module.exports = class extends Command {
             .setFooter({ text: FOOTER, iconURL: OWNERPFP })
             
         const user = message.mentions.users.first()
-        if (user != null) embed.setTitle(`${message.author} gives a cookie to ${user}`)
+        if (user != null) embed.setTitle(`${message.author.tag} gives a cookie to ${user.tag}`)
         message.channel.send({ embeds: [embed] })
     }
 }

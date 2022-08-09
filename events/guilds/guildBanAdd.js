@@ -19,7 +19,7 @@ module.exports = class extends Event {
 
         guild.channels.fetch(admin.audits).then(async (channel) => {
             const embed = new EmbedBuilder()
-                .setTitle(`Member Banned: ${ban.user} | ${ban.user.id}`)
+                .setTitle(`Member Banned: ${ban.user.tag} | ${ban.user.id}`)
                 .setThumbnail(ban.user.avatarURL())
                 .setColor(Colors.Red)
                 .setTimestamp()
